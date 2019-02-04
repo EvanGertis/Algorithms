@@ -38,7 +38,6 @@ int main()
         printf("Enter your choice: ");
          
         scanf("%d", &choice);
-        printf("%d", choice);
         switch (choice)
         {
             case 1:
