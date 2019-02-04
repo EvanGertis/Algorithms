@@ -43,17 +43,25 @@ int main()
         case 1:
             displayList(head);
             break;
+
         case 2:
             printf("What do you want to insert at the end of list? ");
             scanf("%d", &data);
             insertAtEnd(head, data);
             break;
+
         case 3:
             printf("What node do you want to insert the data before? ");
             scanf("%d", &x);
             printf("What data do you want to insert? ");
             scanf("%d", &data);
             insertBefore(head, data, x);
+            break;
+
+        case 4:
+            printf("Enter the data value that you want to insert data the data after ");
+            scanf("%d", &data);
+            insertAtPosition(head, data);
             break;
 
         case 7:
@@ -140,4 +148,29 @@ void insertBefore(struct node *head, int data, int x)
     printf("\n count: %d \n", count);
     temp->link = p->link;
     p->link = temp;
+}
+
+void insertAtPosition(struct node * head, int data){
+    struct node * temp;
+    struct node * p;
+    p = (struct node *)malloc(sizeof(struct node));
+    temp = (struct node * )malloc(sizeof(struct node));
+    temp->info = data;
+
+    p = head;
+    while(p != NULL){
+        printf("p->info: %d", p->info);
+        if(p->info == data){
+            temp->link = p->link;
+            p->link = temp;
+            break;
+        }
+        p = p->link;
+    }
+
+    if(p == NULL){
+        printf("\n data was not in the list \n ");
+    }
+    
+
 }
