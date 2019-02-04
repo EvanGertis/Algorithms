@@ -63,6 +63,12 @@ int main()
             scanf("%d", &data);
             insertAtPosition(head, data);
             break;
+        
+        case 5:
+            printf("Enter the data of the node that you want to delete ");
+            scanf("%d", &data);
+            deleteNode(head, data);
+            break;
 
         case 7:
             return 0;
@@ -172,5 +178,28 @@ void insertAtPosition(struct node * head, int data){
         printf("\n data was not in the list \n ");
     }
     
+
+}
+
+void deleteNode(struct node * head, int data){
+
+    struct node * temp;
+    temp = (struct node * )malloc(sizeof(struct node));
+
+    temp = head;
+    while(temp->link->link != NULL){
+
+        if(temp->info == data){
+            temp->link->link = temp->link;
+            temp->link = NULL;
+            free(temp);
+            break;
+        }
+        temp = temp->link;
+    }
+
+    if(temp->link->link == NULL){
+        printf("\n Couldn't find node \n");
+    }
 
 }
