@@ -60,9 +60,19 @@ int main()
 
 void createList(struct node * head)
 {
-    printf("Running create list\n");
+    struct node * temp;
+    temp = (struct node *)malloc(sizeof(struct node));
+    temp->info = 1;
+    temp->link = head->link;
+    head->link = temp;
 }
 
 void displayList(struct node * head){
-    printf("running display list\n");
+    struct node * p;
+
+    p = head;
+    while(p != NULL){
+        printf("%d\n", p->info);
+        p = p->link;
+    }
 }
