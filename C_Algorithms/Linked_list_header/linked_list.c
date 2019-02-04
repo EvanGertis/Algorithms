@@ -36,6 +36,23 @@ int main()
         printf("6. Reverse the list\n");
         printf("7. Quit\n\n");
         printf("Enter your choice: ");
+         
+        scanf("%d", &choice);
+        printf("%d", choice);
+        switch (choice)
+        {
+            case 1:
+                displayList(head);
+                break;
+            
+            case 7:  return 0;
+                break;
+
+            default:
+                break;
+        }
+
+        
     };
 
     return 0;
@@ -43,5 +60,9 @@ int main()
 
 void createList(struct node * head)
 {
-    
+    printf("Running create list\n");
+}
+
+void displayList(struct node * head){
+    printf("running display list\n");
 }
