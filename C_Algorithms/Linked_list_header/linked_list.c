@@ -11,7 +11,7 @@ void createList(struct node *head);
 void displayList(struct node *head);
 void insertAtEnd(struct node *head, int data);
 void insertBefore(struct node *head, int data, int x);
-void insertAtPosition(struct node *head, int data);
+void insertAtPosition(struct node *head, int data, int x);
 void deleteNode(struct node *head, int data);
 void reverse(struct node *head);
 
@@ -60,8 +60,10 @@ int main()
 
         case 4:
             printf("Enter the data value that you want to insert data the data after ");
-            scanf("%d", &data);
-            insertAtPosition(head, data);
+            scanf("%d", &x);
+            printf("Enter the data that you wish to insert ");
+            scanf("%d", &data);            
+            insertAtPosition(head, data, x);
             break;
         
         case 5:
@@ -106,6 +108,7 @@ void createList(struct node *head)
 
 }
 
+// loops through the list and shows the value at each node.
 void displayList(struct node *head)
 {
     struct node *p;
@@ -119,6 +122,7 @@ void displayList(struct node *head)
     printf("\n");
 }
 
+// inserts a node after the header node.
 void insertAtEnd(struct node *head, int data)
 {
 
@@ -137,6 +141,7 @@ void insertAtEnd(struct node *head, int data)
     p->link = temp;
 }
 
+// inserts a node before a specific index.
 void insertBefore(struct node *head, int data, int x)
 {
     struct node *p;
@@ -144,17 +149,19 @@ void insertBefore(struct node *head, int data, int x)
     temp = (struct node *)malloc(sizeof(struct node));
     temp->info = data;
 
-    //counter variable to keep track of node position.
-    //starts at zero because we have to include the head node.
-    int count = -1;
+    // variable used to keep track of looped nodes.
+    int count;
+    count = 0;
+
+    if(head->link == NULL){
+        printf("\n list is empty \n");
+        return;
+    }
+
     p = head;
 
     while (p->link != NULL)
     {
-
-        if (x == 0)
-            return;
-
         if (x == count)
         {
             break;
@@ -171,26 +178,36 @@ void insertBefore(struct node *head, int data, int x)
     p->link = temp;
 }
 
-void insertAtPosition(struct node * head, int data){
-    struct node * temp;
-    struct node * p;
-    p = (struct node *)malloc(sizeof(struct node));
+// inserts a node after a node.
+void insertAtPosition(struct node * head, int data, int x){
+    struct node * temp, *p;
     temp = (struct node * )malloc(sizeof(struct node));
     temp->info = data;
 
+    // counter variable.
+    int count; 
+    count = 0;
+
+    if(head->link == NULL){
+        printf("\n List is empty \n");
+        return;
+    }
+
     p = head;
-    while(p != NULL){
-        printf("p->info: %d", p->info);
-        if(p->info == data){
+    while(p->link != NULL){
+        printf("p->info: %d ", p->info);
+        if(p->info == x){
             temp->link = p->link;
             p->link = temp;
-            break;
+            return;
         }
+        count++;
         p = p->link;
     }
 
-    if(p == NULL){
+    if(p->link == NULL){
         printf("\n data was not in the list \n ");
+        return;
     }
     
 
