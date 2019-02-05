@@ -148,8 +148,7 @@ void insertAtPosition(struct node * head, int data, int x){
 
 void deleteNode(struct node * head, int data){
 
-    struct node * temp;
-    temp = (struct node * )malloc(sizeof(struct node));
+    struct node * p, *temp;
 
     // guard.
     if(head->link == NULL){
@@ -158,20 +157,20 @@ void deleteNode(struct node * head, int data){
     }
     
 
-    temp = head;
-    while(temp->link->link != NULL){
+    p = head;
+    while(p->link != NULL){
 
-        if(temp->info == data){
-            temp->link->link = temp->link;
-            temp->link = NULL;
+        if(p->link->info == data){
+            temp = p->link;
+            p->link = temp->link;
             free(temp);
-            break;
+            return;
         }
-        temp = temp->link;
+        p = p->link;
     }
 
-    if(temp->link->link == NULL){
-        printf("\n Couldn't find node \n");
+    if(p->link->link == NULL){
+        printf("\n deleting last node \n");
     }
 
 }
