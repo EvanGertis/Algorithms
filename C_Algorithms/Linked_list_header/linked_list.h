@@ -151,6 +151,13 @@ void deleteNode(struct node * head, int data){
     struct node * temp;
     temp = (struct node * )malloc(sizeof(struct node));
 
+    // guard.
+    if(head->link == NULL){
+        printf("The list is empty \n");
+        return;
+    }
+    
+
     temp = head;
     while(temp->link->link != NULL){
 
