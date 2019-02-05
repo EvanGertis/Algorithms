@@ -84,18 +84,33 @@ int main()
 
 void createList(struct node *head)
 {
-    struct node *temp;
-    temp = (struct node *)malloc(sizeof(struct node));
-    temp->info = 1;
-    temp->link = head->link;
-    head->link = temp;
+    int n, data;
+
+    // prompts.
+    printf("Enter the number of nodes that you would like insert ");
+    scanf("%d", &n);
+
+    // guard.
+    if(n == 0){
+        return;
+    }
+
+    // get the data for the nodes.
+    for(int i = 0; i < n; i++){
+        
+        printf("Enter the data that you would like to store at node %d :", i);
+        scanf("%d", &data);
+        insertAtEnd(head, data);
+
+    }
+
 }
 
 void displayList(struct node *head)
 {
     struct node *p;
 
-    p = head;
+    p = head->link;
     while (p != NULL)
     {
         printf("%d ", p->info);
