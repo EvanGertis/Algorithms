@@ -88,7 +88,7 @@ void insertAtBeginning(struct node * head, int data){
 }
 
 
-void createList(struct node *head)
+void createOrderedList(struct node *head)
 {
     int n, data;
 

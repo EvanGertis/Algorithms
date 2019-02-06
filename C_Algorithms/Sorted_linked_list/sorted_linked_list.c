@@ -10,7 +10,7 @@ int main()
     head->info = 0;
     head->link = NULL;
 
-    createList(head);
+    createOrderedList(head);
 
     while (1)
     {
