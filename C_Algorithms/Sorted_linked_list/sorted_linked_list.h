@@ -12,7 +12,7 @@ struct node
 void insertAtEnd(struct node * head, int data);
 void insertAtBeginning(struct node * head, int data);
 void insertBetween(struct node * head, int data, int x);
-void createList(struct node *head);
+void createOrderedList(struct node *head);
 void displayList(struct node *head);
 void deleteNode(struct node * head, int data);
 
@@ -29,7 +29,7 @@ void insertAtEnd(struct node * head, int data){
     }
 
     p = head;
-    while(p->link != NULL){
+    while(p->link != NULL && p->link->info <= data){
         p = p->link;
     }
 
@@ -101,12 +101,23 @@ void createOrderedList(struct node *head)
         return;
     }
 
+    // Need the infor from previous node.
+
     // get the data for the nodes.
     for(int i = 0; i < n; i++){
         
-        printf("Enter the data that you would like to store at node %d :", i);
+        printf("Enter the data that you would like to store :");
         scanf("%d", &data);
-        insertAtEnd(head, data);    
+
+        printf("\n head->info: %d \n", head->info);
+        
+        if(head == NULL ||  data < head->info ){
+            insertAtBeginning(head, data);
+        }
+
+        insertAtEnd(head, data);
+
+
     }
 
 }
