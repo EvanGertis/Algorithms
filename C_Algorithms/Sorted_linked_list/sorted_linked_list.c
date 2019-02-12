@@ -1,7 +1,7 @@
 #include "sorted_linked_list.h"
 
 
-int main()
+__declspec(dllexport) int __stdcall main()
 {
     int choice, data, x, k;
     struct node *head;

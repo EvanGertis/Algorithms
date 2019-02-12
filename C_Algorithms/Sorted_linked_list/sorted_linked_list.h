@@ -108,8 +108,6 @@ void createOrderedList(struct node *head)
         
         printf("Enter the data that you would like to store :");
         scanf("%d", &data);
-
-        printf("\n head->info: %d \n", head->info);
         
         if(head == NULL ||  data < head->info ){
             insertAtBeginning(head, data);
