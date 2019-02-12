@@ -57,7 +57,21 @@ void createList(struct node * head){
 
 
 void insertInOrder(struct node * head, int data){
-    printf("Adding %d", data);
+    // declare local variables.
+    // need a pointer to loop and a pointer to insert.
+    struct node *p, *temp;
+    
+    // initialize storage pointer.
+    temp = (struct node *)malloc(sizeof(struct node));
+
+    // if we are at the first node then
+    // return the list.
+    if(head->link == NULL){
+        return;
+    }
+
+    // else we loop through the list.
+
 }
 
 //-------------------//
