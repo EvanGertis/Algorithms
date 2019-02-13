@@ -66,6 +66,8 @@ void insertInOrder(struct node *head, int data)
     temp->info = data;
 
     if(head->link == NULL || data < head->info){
+
+        // inserts a temp node at the beginning of the list.
         temp->link = head->link;
         head->link = temp;
     }
@@ -78,7 +80,8 @@ void insertInOrder(struct node *head, int data)
 
             p = p->link;
         }
-
+        
+        // inserts a temp node at the end of the list. 
         temp->link = p->link;
         p->link = temp;
     }
