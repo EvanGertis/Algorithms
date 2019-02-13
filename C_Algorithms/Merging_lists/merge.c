@@ -21,9 +21,10 @@ int main()
 
     // declare head pointer.
     struct node *head;
-
+    head = (struct node *)malloc(sizeof(struct node));
     // set the head to null.
-    head = NULL;
+    head->info = 0;
+    head->link = NULL;
 
     createList(head);
     displayList(head);
@@ -50,15 +51,6 @@ void createList(struct node *head)
     {
         printf("Enter the data that you would like to insert at %d: ", i);
         scanf("%d", &data);
-
-        // insert in beginning;
-        if (head == NULL || data <= head->info)
-        {
-            temp->link = head->link;
-            head = temp;
-            return;
-        }
-
         insertInOrder(head, data);
     }
 }
@@ -73,27 +65,34 @@ void insertInOrder(struct node *head, int data)
     temp = (struct node *)malloc(sizeof(struct node));
     temp->info = data;
 
-    printf("data: %d", data);
-
-    // else we loop through the list.
-    p = head;
-    while (p != NULL && p->link->info <= data)
-    {
-        p = p->link;
+    if(head->link == NULL || data < head->info){
+        temp->link = head->link;
+        head->link = temp;
     }
+    else
+    {
+        // else we loop through the list.
+        p = head;
+        while (p->link != NULL && p->link->info < data)
+        {
 
-    temp->link = p->link;
-    p = temp;
-    return;
+            p = p->link;
+        }
+
+        temp->link = p->link;
+        p->link = temp;
+    }
+    
+
 }
 
 void displayList(struct node *head)
 {
     // declare local variables.
     struct node *p;
-
+    printf("\n should display list \n");
     // gaurd if it's an empty list.
-    if (head == NULL)
+    if (head->link == NULL)
     {
         return;
     }
