@@ -93,7 +93,6 @@ void displayList(struct node *head)
 {
     // declare local variables.
     struct node *p;
-    printf("\n should display list \n");
     // gaurd if it's an empty list.
     if (head->link == NULL)
     {
