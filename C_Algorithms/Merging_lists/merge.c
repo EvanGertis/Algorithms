@@ -13,21 +13,37 @@ struct node
 void createList(struct node *head);
 void insertInOrder(struct node *head, int data);
 void displayList(struct node *head);
+struct node * mergeList(struct node *listOne, struct node *listTwo);
 //-------------------//
 
 // initial entry point for the program.
 int main()
 {
 
-    // declare head pointer.
-    struct node *head;
-    head = (struct node *)malloc(sizeof(struct node));
-    // set the head to null.
-    head->info = 0;
-    head->link = NULL;
+    // declare listOne pointer.
+    struct node *listOne;
+    listOne = (struct node *)malloc(sizeof(struct node));
+    // set the list head to null.
+    listOne->info = 0;
+    listOne->link = NULL;
 
-    createList(head);
-    displayList(head);
+    // declare listTwo pointer.
+    struct node *listTwo;
+    listTwo = (struct node *)malloc(sizeof(struct node));
+    // set the list head to null.
+    listTwo->info = 0;
+    listTwo->link = NULL;
+
+    // generate lists
+    createList(listOne);
+    displayList(listOne);
+    
+    printf("\n");
+
+    createList(listTwo);
+    displayList(listTwo);
+
+    mergeList(listOne->link, listTwo->link);
 
     return 0;
 }
@@ -107,6 +123,17 @@ void displayList(struct node *head)
         printf("%d | ", p->info);
         p = p->link;
     }
+}
+
+struct node * mergeList(struct node * listOne, struct node * listTwo){
+
+    struct node *temp, *pM;
+    temp = (struct node *)malloc(sizeof(struct node));
+    pM = (struct node *)malloc(sizeof(struct node));
+
+
+    
+    return pM;    
 }
 
 //-------------------//
