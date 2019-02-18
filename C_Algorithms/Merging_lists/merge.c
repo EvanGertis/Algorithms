@@ -34,6 +34,9 @@ int main()
     listTwo->info = 0;
     listTwo->link = NULL;
 
+    // declare merge list pointer.
+    struct node *startM;
+
     // generate lists
     createList(listOne);
     displayList(listOne);
@@ -43,7 +46,10 @@ int main()
     createList(listTwo);
     displayList(listTwo);
 
-    mergeList(listOne->link, listTwo->link);
+    printf("\n");
+
+    startM = mergeList(listOne->link, listTwo->link);
+    displayList(startM);
 
     return 0;
 }
@@ -127,13 +133,56 @@ void displayList(struct node *head)
 
 struct node * mergeList(struct node * listOne, struct node * listTwo){
 
-    struct node *temp, *pM;
+    struct node *temp, *pM, *startM;
     temp = (struct node *)malloc(sizeof(struct node));
-    pM = (struct node *)malloc(sizeof(struct node));
+    temp->link = NULL;
+    startM = temp;
 
+    if(listOne->info <= listTwo->info){
+        temp->info = listOne->info;
+        listOne = listOne->link;
+    }
+    else{
+        temp->info = listTwo->info;
+        listTwo = listTwo->link;
+    }
 
+    pM = startM;
+    while(listOne != NULL && listTwo != NULL){
+
+        temp = (struct node *)malloc(sizeof(struct node));
+        if(listOne->info <= listTwo->info){
+            temp->info = listOne->info;
+            listOne = listOne->link;
+        }
+        else{
+            temp->info = listTwo->info;
+            listTwo = listTwo->link;
+        }
+        temp->link = NULL;
+        pM->link = temp;
+        pM = temp;
+    }
+
+    while(listOne != NULL){
+        temp = (struct node *)malloc(sizeof(struct node));
+        temp->info = listOne->info;
+        temp->link = NULL;
+        pM->link = temp;
+        pM = temp;
+        listOne = listOne->link;
+    }
     
-    return pM;    
+    while(listTwo != NULL){
+        temp = (struct node *)malloc(sizeof(struct node));
+        temp->info = listTwo->info;
+        temp->link = NULL;
+        pM->link = temp;
+        pM = temp;
+        listTwo = listTwo->link;
+    }
+      
+    return startM;    
 }
 
 //-------------------//
