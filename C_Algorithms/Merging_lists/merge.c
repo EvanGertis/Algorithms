@@ -1,5 +1,3 @@
-#include "stdlib.h"
-#include "stdio.h"
 #include "merge.h"
 
 // initial entry point for the program.
@@ -34,7 +32,7 @@ int main()
 
     printf("\n");
 
-    startM = mergeList(listOne->link, listTwo->link);
+    startM = merge(listOne->link, listTwo->link);
     displayList(startM);
 
     return 0;

@@ -1,3 +1,5 @@
+#include "stdlib.h"
+#include "stdio.h"
 
 // node for list.
 struct node
@@ -12,6 +14,7 @@ void createList(struct node *head);
 void insertInOrder(struct node *head, int data);
 void displayList(struct node *head);
 struct node * mergeList(struct node *listOne, struct node *listTwo);
+struct node * merge(struct node *listOne, struct node *listTwo);
 //-------------------//
 
 
@@ -141,6 +144,44 @@ struct node * mergeList(struct node * listOne, struct node * listTwo){
         pM->link = temp;
         pM = temp;
         listTwo = listTwo->link;
+    }
+      
+    return startM;    
+}
+
+struct node * merge(struct node * listOne, struct node * listTwo){
+
+    struct node *pM, *startM;
+
+    if(listOne->info <= listTwo->info){
+        startM = listOne;
+        listOne = listOne->link;
+    }
+    else{
+        startM = listTwo;
+        listTwo = listTwo->link;
+    }
+
+    pM = startM;
+    while(listOne != NULL && listTwo != NULL){
+
+        if(listOne->info <= listTwo->info){
+            pM->link =  listOne;
+            pM = pM->link;
+            listOne = listOne->link;
+        }
+        else{
+            pM->link = listTwo;
+            pM = pM->link;
+            listTwo = listTwo->link;
+        }
+    }
+
+    if(listOne != NULL){
+        pM->link = listTwo;
+    }
+    else if (listTwo != NULL){
+        pM->link = listOne;
     }
       
     return startM;    
