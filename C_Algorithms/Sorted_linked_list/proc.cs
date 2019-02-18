@@ -11,7 +11,6 @@ namespace SortedList{
         static void Main(){
 
             Console.WriteLine("Running C program sorted_linked_list");
-
             // call main from Main() in c#
             main();
             // Keep the console window open in debug mode.

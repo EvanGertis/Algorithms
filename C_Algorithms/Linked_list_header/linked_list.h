@@ -169,8 +169,8 @@ void deleteNode(struct node * head, int data){
         p = p->link;
     }
 
-    if(p->link->link == NULL){
-        printf("\n deleting last node \n");
+    if(p->link == NULL){
+        printf("\n node isn't there \n");
     }
 
 }
