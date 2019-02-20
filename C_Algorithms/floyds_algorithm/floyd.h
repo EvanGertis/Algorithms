@@ -13,6 +13,8 @@ struct node {
 void createList(struct node *head);
 void insertAtEnd(struct node * head, int data);
 void displayList(struct node* head);
+struct node *findCycle(struct node *start);
+void makeListCircular(struct node *head);
 
 
 // createList prompts the user for number of nodes and data to be inserted.
@@ -62,4 +64,37 @@ void displayList(struct node *head){
     }
 
 
+}
+
+void makeListCircular(struct node *head){
+    struct node *p;
+
+    p = head->link;
+    while(p != NULL){
+        p = p->link;
+    }
+
+    p = head;
+
+}
+
+struct node *findCycle(struct node *start){
+    struct node *slowP, *fastP;
+
+    if(start->link == NULL){
+        return NULL;
+    }
+
+    slowP = fastP = start;
+
+    while(slowP != NULL && fastP !=NULL){
+        slowP = slowP->link;
+        fastP = fastP->link->link;
+
+        if(slowP == fastP){
+            return slowP;
+        }
+    }
+
+    return NULL;
 }
