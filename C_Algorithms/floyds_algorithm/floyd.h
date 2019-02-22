@@ -15,6 +15,7 @@ void insertAtEnd(struct node * head, int data);
 void displayList(struct node* head);
 struct node *findCycle(struct node *start);
 void makeListCircular(struct node *head);
+void removeCycle(struct node * head, struct node * cycle);
 
 
 // createList prompts the user for number of nodes and data to be inserted.
@@ -96,4 +97,38 @@ struct node *findCycle(struct node *start){
     }
 
     return NULL;
+}
+
+void removeCycle(struct node * head, struct node * cycle){
+    struct node *p, *q;
+    int i, lenCycle, lenRemList, lengthList;
+
+    printf("Node at which the cycle was detected is %d \n", cycle->info);
+    p = q = cycle;
+    lenCycle = 0;
+    do{
+        lenCycle++;
+        q=q->link;
+    }while(p!=q);
+    printf("Length of cycle is : %d\n", lenCycle);
+
+    lenRemList = 0;
+    p = head;
+    while(p != q){
+        lenRemList++;
+        p = p->link;
+        q = q->link;
+    }
+
+    printf("Number of nodes not included in the cycle are: %d\n", lenRemList);
+    lengthList = lenCycle +lenRemList;
+    printf("Length of the list is : %d\n", lengthList);
+
+    p = head;
+    for(i = 1; i <= lengthList -1; i++){
+        p = p->link;
+    }
+    p->link = NULL;
+
+ 
 }
