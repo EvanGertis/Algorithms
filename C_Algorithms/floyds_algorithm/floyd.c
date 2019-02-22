@@ -5,6 +5,7 @@
 int main(){
 
     struct node *head;
+    int x;
     head = (struct node *)malloc(sizeof(struct node));
     head->info = 0;
     head->link = NULL;
@@ -21,7 +22,10 @@ int main(){
         scanf("%d", &test);
         
         if(test == 1){
-            makeListCircular(head);
+            printf("Enter the node where you want to insert a cycle:\n");
+            scanf("%d", &x);
+            insertCycle(head->link, x);
+            // makeListCircular(head);
             break;
         }
         else if(test == 0){

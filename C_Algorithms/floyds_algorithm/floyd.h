@@ -16,6 +16,7 @@ void displayList(struct node* head);
 struct node *findCycle(struct node *start);
 void makeListCircular(struct node *head);
 void removeCycle(struct node * head, struct node * cycle);
+void insertCycle(struct node * head, int x);
 
 
 // createList prompts the user for number of nodes and data to be inserted.
@@ -130,5 +131,18 @@ void removeCycle(struct node * head, struct node * cycle){
     }
     p->link = NULL;
 
- 
+}
+
+void insertCycle(struct node * head, int x){
+    struct node *p, *px = NULL, *prev, *ptr;
+
+    p = head;
+    while(p != NULL){
+        if(p->info ==x)
+            px = p;
+        prev = p;
+        p = p->link;
+    }
+    if(px != NULL)
+        prev->link = px;
 }
