@@ -70,11 +70,10 @@ void makeListCircular(struct node *head){
     struct node *p;
 
     p = head->link;
-    while(p != NULL){
+    while(p->link != NULL){
         p = p->link;
     }
-
-    p = head;
+    p->link = head->link;
 
 }
 
