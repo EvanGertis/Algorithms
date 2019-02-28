@@ -12,6 +12,15 @@ int Rec::sumN(int n)
 	return n + sumN(n - 1);
 }
 
+int Rec::fib(int n) {
+	
+	if (n <= 0 ) {
+		return 1;
+	}
+
+	return fib(n-1) + fib(n -2);
+}
+
 Rec::Rec()
 {
 }

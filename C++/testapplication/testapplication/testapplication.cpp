@@ -9,7 +9,13 @@ int main()
 	Rec rec;
 
 	int sum = rec.sumN(4);
-	std::printf("The sum is %d", sum);
+	
+	// 1, 1, 2, 3, 5, 8
+	int n = 6;
+	int fn = rec.fib(6);
+
+	std::printf("The sum is %d \n", sum);
+	std::printf("The %d th fibonacci number is: %d", n, fn);
 
 }
 

@@ -13,6 +13,7 @@ class Rec
 {
 public:
 	int sumN(int n);
+	int fib(int n);
 	Rec();
 	~Rec();
 
