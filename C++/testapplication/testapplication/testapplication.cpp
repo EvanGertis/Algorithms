@@ -12,11 +12,12 @@ int main()
 	
 	// 1, 1, 2, 3, 5, 8
 	int n = 6;
-	int fn = rec.fib(6);
+	int fn = rec.fib(n);
+	int nFac = rec.fac(n);
 
 	std::printf("The sum is %d \n", sum);
-	std::printf("The %d th fibonacci number is: %d", n, fn);
-
+	std::printf("The %d th fibonacci number is: %d \n", n, fn);
+	std::printf("%d! is: %d\n", n, nFac);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
