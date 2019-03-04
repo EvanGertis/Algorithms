@@ -30,3 +30,62 @@ int main(){
     printf("Hi there.");
     return 0;
 }
+
+/*BEGIN - initializeStack*/
+void initializeStack(){
+
+}
+/*END - initializeStack*/
+
+/*BEGIN - isEmpty*/
+int isEmpty(){
+
+}
+/*END - isEmpty*/
+
+/*BEGIN - isFull*/
+int isFull(){
+
+}
+/*END - isFull*/
+
+/*BEGIN - size*/
+int size(){
+
+}
+/*END - size*/
+
+/*BEGIN - peek*/
+int peek(){
+
+}
+/*END - peek*/
+
+/*BEGIN - push*/
+void push(int x){
+
+}
+/*END - push*/
+
+/*BEGIN - pop*/
+int pop(){
+
+}
+/*END - pop*/
+
+/*BEGIN - push*/
+void push(int x){
+
+}
+/*END - push*/
+/*BEGIN - pop*/
+int pop(){
+
+}
+/*END - pop*/
+
+/*BEGIN - display*/
+void display(){
+
+}
+/*END - display*/
