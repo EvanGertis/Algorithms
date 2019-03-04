@@ -40,24 +40,25 @@ void initializeStack(){
 /*BEGIN - isEmpty*/
 int isEmpty(){
 
+    return 0;
 }
 /*END - isEmpty*/
 
 /*BEGIN - isFull*/
 int isFull(){
-
+    return 0;
 }
 /*END - isFull*/
 
 /*BEGIN - size*/
 int size(){
-
+    return 0;
 }
 /*END - size*/
 
 /*BEGIN - peek*/
 int peek(){
-
+    return 0;
 }
 /*END - peek*/
 
@@ -66,23 +67,6 @@ void push(int x){
 
 }
 /*END - push*/
-
-/*BEGIN - pop*/
-int pop(){
-
-}
-/*END - pop*/
-
-/*BEGIN - push*/
-void push(int x){
-
-}
-/*END - push*/
-/*BEGIN - pop*/
-int pop(){
-
-}
-/*END - pop*/
 
 /*BEGIN - display*/
 void display(){
