@@ -86,7 +86,7 @@ int pop(){
     }
     else{
         printf("The list is empty");
-        return -1;
+        exit(1);
     }
 }
 /*END - pop*/
