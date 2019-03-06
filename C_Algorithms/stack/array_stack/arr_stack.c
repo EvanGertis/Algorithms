@@ -10,7 +10,7 @@ and algorithms.
 #include <stdlib.h>
 
 //size of the stack
-#define MAX 50
+#define MAX 50 
 
 //global variables.
 int a[MAX];
@@ -40,40 +40,40 @@ int main(){
         printf("5.Display the size of the stack\n");
         printf("6. Quit\n");
         printf("Enter you choice :\n");
-        printf("%d", &choice);
-    }
-    
-    //parse the selection.
-    switch (choice)
-    {
-        case 1:
-            printf("Please enter the number that you want to push\n");
-            scanf("%d", &x);
-            push(x);
+        scanf("%d", &choice);
+        
+        //exit.
+        if(choice == 6){
             break;
-    
-        case 2:
-            /* code */
-            break;
-    
-        case 3:
-            /* code */
-            break;
-    
-        case 4:
-            /* code */
-            break;
-    
-        case 5:
-            /* code */
-            break;
-    
-        case 6:
-            /* code */
-            break;
-    
-        default:
-            break;
+        }
+
+        //parse the selection.
+        switch (choice)
+        {
+            case 1:
+                printf("Please enter the number that you want to push\n");
+                scanf("%d", &x);
+                push(x);
+                break;
+        
+            case 2:
+                /* code */
+                break;
+        
+            case 3:
+                /* code */
+                break;
+        
+            case 4:
+                display();
+                break;
+        
+            case 5:
+                break;
+            
+            default:
+                break;
+        }
     }
     
     return 0;
@@ -81,7 +81,7 @@ int main(){
 
 /*BEGIN - initializeStack*/
 void initializeStack(){
-
+    top = -1;
 }
 /*END - initializeStack*/
 
@@ -94,6 +94,11 @@ int isEmpty(){
 
 /*BEGIN - isFull*/
 int isFull(){
+    if(top == MAX -1){
+        return 1;
+    } else {
+        return 0;
+    }
     return 0;
 }
 /*END - isFull*/
@@ -112,12 +117,22 @@ int peek(){
 
 /*BEGIN - push*/
 void push(int x){
-
+    if(isFull()){
+        printf("Stack Overflow \n");
+        return;
+    }
+    top++;
+    a[top] = x;
 }
 /*END - push*/
 
 /*BEGIN - display*/
 void display(){
-
+    for(int i = 0; i <= top; i++)
+    {
+        printf(" %d | ", a[i]);
+    }
+    printf("\n");
+    
 }
 /*END - display*/
