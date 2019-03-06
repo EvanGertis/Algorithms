@@ -34,6 +34,32 @@ int Rec::fac(int n)
 	return n*m;
 }
 
+int Rec::binarySearch(int nums[], int low, int high, int num)
+{	
+	//base case.
+	if (low > high) {
+		return -1;
+	}
+
+	int middle = low + (high - low) / 2;
+
+	if (nums[middle] == num) {
+		return nums[middle];
+	}
+
+	if (num < nums[middle]) {
+		return binarySearch(nums, low, middle - 1, num);
+	}
+	else {
+		return binarySearch(nums, middle + 1, high, num);
+	}
+
+
+	return 0;
+}
+
+
+
 
 
 // default constructor.

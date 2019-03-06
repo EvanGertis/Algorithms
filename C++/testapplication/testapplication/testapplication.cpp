@@ -18,6 +18,24 @@ int main()
 	std::printf("The sum is %d \n", sum);
 	std::printf("The %d th fibonacci number is: %d \n", n, fn);
 	std::printf("%d! is: %d\n", n, nFac);
+
+	//binary search testing.
+	std::printf("\n************************\n");
+	int nums[] = { 1, 2,3, 4, 5, 6 };
+	
+	// display elements.
+	int size = sizeof(nums) / sizeof(nums[0]);
+	for (int i = 0; i < size; i++)
+	{
+		std::printf("%d | ", nums[i]);
+	}
+
+	// new line.
+	printf("\n");
+
+	int result = rec.binarySearch(nums, nums[0], nums[size - 1], 4);
+
+	printf("result from binary search: %d", result);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

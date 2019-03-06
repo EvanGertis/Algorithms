@@ -15,6 +15,7 @@ public:
 	int sumN(int n);
 	int fib(int n);
 	int fac(int n);
+	int binarySearch(int nums[], int low, int high, int num);
 	Rec();
 	~Rec();
 
