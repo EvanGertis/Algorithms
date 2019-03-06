@@ -51,17 +51,17 @@ int main(){
         switch (choice)
         {
             case 1:
-                printf("Please enter the number that you want to push\n");
+                printf("Please enter the number that you want to push \n");
                 scanf("%d", &x);
                 push(x);
                 break;
         
             case 2:
-                /* code */
+                printf("The element popped off was %d \n", pop());
                 break;
         
             case 3:
-                /* code */
+                peek();
                 break;
         
             case 4:
@@ -69,6 +69,7 @@ int main(){
                 break;
         
             case 5:
+                printf("The size is %d \n", size());
                 break;
             
             default:
@@ -87,8 +88,12 @@ void initializeStack(){
 
 /*BEGIN - isEmpty*/
 int isEmpty(){
-
-    return 0;
+    if(top < 0){
+        return 1;
+    }
+    else {
+        return 0;
+    }
 }
 /*END - isEmpty*/
 
@@ -105,13 +110,13 @@ int isFull(){
 
 /*BEGIN - size*/
 int size(){
-    return 0;
+    return top + 1;
 }
 /*END - size*/
 
 /*BEGIN - peek*/
 int peek(){
-    return 0;
+    return a[top];
 }
 /*END - peek*/
 
@@ -125,6 +130,19 @@ void push(int x){
     a[top] = x;
 }
 /*END - push*/
+
+/*BEGIN - pop*/
+int pop(){
+    if(!isEmpty()){
+        top-= 1;
+        return a[top + 1];
+    }
+    else{
+        printf("The list is empty");
+        return -1;
+    }
+}
+/*END - pop*/
 
 /*BEGIN - display*/
 void display(){
