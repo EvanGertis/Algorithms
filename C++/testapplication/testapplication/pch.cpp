@@ -34,6 +34,7 @@ int Rec::fac(int n)
 	return n*m;
 }
 
+
 int Rec::binarySearch(int nums[], int low, int high, int num)
 {	
 	//base case.
@@ -43,6 +44,7 @@ int Rec::binarySearch(int nums[], int low, int high, int num)
 
 	int middle = low + (high - low) / 2;
 
+	// if our number is the middle index.
 	if (nums[middle] == num) {
 		return nums[middle];
 	}
@@ -56,6 +58,20 @@ int Rec::binarySearch(int nums[], int low, int high, int num)
 
 
 	return 0;
+}
+
+//solve the towers of hanoi implementation.
+void Rec::solveTowerHanoi(int n, char rodFrom, char middleRod, char rodTo) {
+	
+	if (n == 1) {
+		std::cout << "moving 1 from " << rodFrom << " to " << rodTo << std::endl;
+		return;
+	}
+
+	solveTowerHanoi(n - 1, rodFrom, rodTo, middleRod);
+	std::cout << "plate " << n << " from " << rodFrom << " to " << middleRod << std::endl;
+	solveTowerHanoi(n - 1, rodFrom, middleRod, rodTo);
+
 }
 
 

@@ -16,6 +16,7 @@ public:
 	int fib(int n);
 	int fac(int n);
 	int binarySearch(int nums[], int low, int high, int num);
+	void solveTowerHanoi(int n, char rodFrom, char middleRoad, char rodTo);
 	Rec();
 	~Rec();
 
