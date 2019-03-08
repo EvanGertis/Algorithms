@@ -96,46 +96,94 @@ int main(){
 
 /*BEGIN intializeStack*/
 void initializeStack(){
-
+    top = NULL;
 }
 /*END initializeStack*/
 
 /*BEGIN isEmpty*/
 int isEmpty(){
-
-    return 0;
+    if(top == NULL){
+        printf("The stack is empty");
+        return 1;
+    } else {
+        return 0;
+    }
 }
 /*END isEmpty*/
 
 /*BEGIN size*/
 int size(){
+    // tracker pointer.
+    struct node *p;
 
-    return 0;
+    //keeps track of size.
+    int c;
+
+    p = top;
+    while(p != NULL){
+        c++;
+        p = p->link;
+    }
+
+
+    return c;
 }
 /*END size*/
 
 /*BEGIN push*/
 void push(int x){
+    struct node *temp;
+    temp = (struct node *)malloc(sizeof(struct node));
+    temp->info = x;
 
+    temp->link = top->link;
+    top = temp;
 }
 /*END push*/
 
 /*BEGIN pop*/
 int pop(){
+    // deletable pointer.
+    struct node *p;
 
-    return 0;
+    // value stored in top node.
+    int val;
+    val = top->info;
+
+    if(isEmpty){
+        printf("list is empty");
+        return -1;
+    } else {
+        p->link = top->link;
+        top = top->link->link;
+        free(p);
+
+        return val;
+    }
+
 }
 /*END pop*/
 
 /*BEGIN peek*/
 int peek(){
+    // value stored in top node.
+    int val;
+    val = top->info;
 
-    return 0;
+    return val;
 }
 /*END peek*/
 
 /*BEGIN display*/
 void display(){
+    // looping pointer.
+    struct node *p;
+
+    p = top;
+    while(p != NULL){
+        printf("| %d |", p->info);
+        p = p->link;
+    }
 
 }
 /*END display*/
