@@ -103,7 +103,7 @@ void initializeStack(){
 /*BEGIN isEmpty*/
 int isEmpty(){
     if(top == NULL){
-        printf("The stack is empty");
+        printf("The stack is empty\n");
         return 1;
     } else {
         return 0;
@@ -117,12 +117,12 @@ int size(){
     struct node *p;
 
     //keeps track of size.
-    int c;
+    int c = 0;
 
     p = top;
     while(p != NULL){
-        c++;
         p = p->link;
+        c++;
     }
 
 
@@ -134,9 +134,12 @@ int size(){
 void push(int x){
     struct node *temp;
     temp = (struct node *)malloc(sizeof(struct node));
+    if(temp == NULL){
+        printf("No memory: Stack overflow\n");
+        return;
+    }
     temp->info = x;
-
-    temp->link = top->link;
+    temp->link = top;
     top = temp;
 }
 /*END push*/
@@ -148,14 +151,14 @@ int pop(){
 
     // value stored in top node.
     int val;
-    val = top->info;
 
     if(isEmpty){
         printf("list is empty");
-        return -1;
+        exit(1);
     } else {
-        p->link = top->link;
-        top = top->link->link;
+        p = top;
+        val = top->info;
+        top = top->link;
         free(p);
 
         return val;
@@ -168,9 +171,12 @@ int pop(){
 int peek(){
     // value stored in top node.
     int val;
-    val = top->info;
+    if(isEmpty()){
+        printf("stack underflow\n");
+        exit(1);
+    }
 
-    return val;
+    return top->info;
 }
 /*END peek*/
 
@@ -180,10 +186,20 @@ void display(){
     struct node *p;
 
     p = top;
+
+    //gaurd.
+    if(isEmpty()){
+        printf("stack is empty\n");
+        return;
+    }
+
+    printf("stack is : \n\n");
     while(p != NULL){
         printf("| %d |", p->info);
         p = p->link;
     }
+    printf("\n");
+
 
 }
 /*END display*/
