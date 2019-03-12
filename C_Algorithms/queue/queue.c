@@ -54,10 +54,11 @@ int main(){
                 insert(x);
                 break;
             case 2:
-                Delete();
+                x = Delete();
+                printf("%d deleted from the queue", x);
                 break;
             case 3:
-                printf("The top of list %d", peek());
+                printf("The top of list %d \n", peek());
                 break;
             case 4: 
                 display();
@@ -87,7 +88,7 @@ void initializeQueue(){
 
 /*[START] isFull*/
 int isFull(){
-    if(size() >= 50){
+    if(rear == (MAX -1) ){
         return 1;
     } else {
         return 0;
@@ -97,7 +98,7 @@ int isFull(){
 
 /*[START] isEmpty*/
 int isEmpty(){
-    if(front == rear ){
+    if(front == (rear + 1) || front == -1){
         return 1;
     } else {
         return 0;
@@ -107,12 +108,22 @@ int isEmpty(){
 
 /*[START] size*/
 int size(){
-    return sizeof(a)/sizeof(a[0]);
+    if(isEmpty()){
+        return 0;
+    } else {
+        return rear - front + 1;
+    }
 }
 /*[END] size*/
 
 /*[START] insert*/
 void insert(int x){
+    if(isFull()){
+        printf("Queue overflow \n");
+    }
+    else if(front == -1){
+        front = 0;
+    }
     rear++;
     a[rear] = x;
     
@@ -121,20 +132,21 @@ void insert(int x){
 
 /*[START] Delete*/
 int Delete(){
-    if(isEmpty){
+    int x;
+    if(isEmpty()){
         printf("The list is empty \n");
         exit(1);
     } else {
-        front++;
         a[front] = 0;
-        return 1;
+        front++;
+        return x;
     }
 }
 /*[END] Delete*/
 
 /*[START] peek*/
 int peek(){
-    if(isEmpty){
+    if(isEmpty()){
         printf("The list is empty \n");
         exit(1);
     } else {
@@ -146,11 +158,20 @@ int peek(){
 
 /*[START] display*/
 void display(){
-    for(int i = 0; i < size(); i++)
+    int i;
+
+    if(isEmpty()){
+        printf("Queue is empty \n");
+        return;
+    }
+
+    printf("Queue is: \n\n");
+
+    for(int i = front; i <= rear; i++)
     {
         printf("|%d|", a[i]);
     }
-    printf("\n");
+    printf("\n\n");
     
 }
 /*[END] display*/
