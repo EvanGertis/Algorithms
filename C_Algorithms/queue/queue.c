@@ -57,7 +57,7 @@ int main(){
                 Delete();
                 break;
             case 3:
-                peek();
+                printf("The top of list %d", peek());
                 break;
             case 4: 
                 display();
@@ -81,49 +81,77 @@ int main(){
 
 /*[START] initializeQueue*/
 void initializeQueue(){
-
+    front, rear = -1;
 }
 /*[END] initializeQueue*/
 
 /*[START] isFull*/
 int isFull(){
-    return 0;
+    if(size() >= 50){
+        return 1;
+    } else {
+        return 0;
+    }
 }
 /*[END] isFull*/
 
 /*[START] isEmpty*/
 int isEmpty(){
-    return 0;
+    if(front == rear ){
+        return 1;
+    } else {
+        return 0;
+    }
 }
 /*[END] isEmpty*/
 
 /*[START] size*/
 int size(){
-    return 0;
+    return sizeof(a)/sizeof(a[0]);
 }
 /*[END] size*/
 
 /*[START] insert*/
 void insert(int x){
-
+    rear++;
+    a[rear] = x;
+    
 }
 /*[END] insert*/
 
 /*[START] Delete*/
 int Delete(){
-    return 0;
+    if(isEmpty){
+        printf("The list is empty \n");
+        exit(1);
+    } else {
+        front++;
+        a[front] = 0;
+        return 1;
+    }
 }
 /*[END] Delete*/
 
 /*[START] peek*/
 int peek(){
-    return 0;
+    if(isEmpty){
+        printf("The list is empty \n");
+        exit(1);
+    } else {
+        return a[front];
+    }
+
 }
 /*[END] peek*/
 
 /*[START] display*/
 void display(){
-
+    for(int i = 0; i < size(); i++)
+    {
+        printf("|%d|", a[i]);
+    }
+    printf("\n");
+    
 }
 /*[END] display*/
 
