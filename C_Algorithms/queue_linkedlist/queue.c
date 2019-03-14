@@ -87,7 +87,7 @@ void initializeQueue(){
 
 //BEGIN  isEmpty.
 int isEmpty(){
-    if(front == NULL && rear == NULL){
+    if(front == NULL){
         return 1;
     } else {
         return 0;
@@ -98,7 +98,7 @@ int isEmpty(){
 //BEGIN size.
 int size(){
     struct node *p;
-    int c;
+    int c = 0;
 
     if(isEmpty()){
         printf("List is empty\n");
@@ -106,7 +106,7 @@ int size(){
     }
     
     p = front;
-    while(p != rear){
+    while(p != NULL){
         c++;
         p= p->link;
     }
@@ -176,7 +176,7 @@ void display(){
     }
 
     p = front;
-    while(p != rear){
+    while(p != NULL){
         printf("|%d| ", p->info);
         p= p->link;
     }
