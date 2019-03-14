@@ -66,11 +66,11 @@ int main(){
                 break;
             case 3:
                 printf("Enter the number that you would like to insert into the queue\n");
-                scanf("%d", x);
+                scanf("%d", &x);
                 insert(x);
                 break;
             case 4:
-                printf("Deleted %d from the queue", Delete());
+                printf("Deleted %d from the queue\n", Delete());
                 break;
             case 5:
                 display();
@@ -137,12 +137,14 @@ int size(){
     int c;
 
     p = rear->link;
-    while(p != rear){
+    do{
+
         c++;
         p = p->link;
-    }
 
-    return 0;
+    } while(p != rear->link);
+
+    return c;
 }
 //End size
 
@@ -161,6 +163,7 @@ void insert(int x){
     } else {
         temp->link = rear->link;
         rear->link = temp;
+        rear = temp;
     }
 
 }
@@ -176,14 +179,21 @@ int Delete(){
     if(isEmpty()){
         printf("List is empty cannot delete.\n");
         exit(1);
-    } else {
-        temp->link = rear;
-        x = temp->info;
-        rear->link = temp->link;
+    }
+    
+    //If there is only one element.
+    if(rear->link == rear){
+        temp = rear;
         rear = NULL;
-        free(temp);
+        
+    }
+    else {
+        temp->link = rear->link;
+        rear->link = temp->link;
     }
 
+    x = temp->info;
+    free(temp);
     return x;
 }
 //End Delete
@@ -198,9 +208,11 @@ void display(){
         exit(1);
     } else {
         p = rear->link;
-        while(p != rear){
+        do{
             printf("| %d |", p->info);
-        }
+            p = p->link;
+
+        } while(p != rear->link);
         printf("\n");
         
     }
