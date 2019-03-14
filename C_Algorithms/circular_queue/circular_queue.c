@@ -98,13 +98,25 @@ void initializeQueue(){
 
 //Begin isEmpty
 int isEmpty(){
-
-    return 0;
+    if(rear == NULL){
+        return 1;
+    } else {
+        return 0;
+    }
+    
 }
 //End isEmpty
 
 //Begin peek
 int peek(){
+
+    // guard in case the queue is empty.
+    if(isEmpty()){
+        printf("List is Empty\n");
+        exit(1);
+    } else {
+        return rear->link->info;
+    }
 
     return 0;
 }
@@ -113,6 +125,23 @@ int peek(){
 //Begin size
 int size(){
 
+    // guard the empty case.
+    if(isEmpty()){
+        printf("The list is empty. \n");
+        exit(1);
+    }
+
+    //locals for skipping through and counting
+    //the size of the list.
+    struct node *p;
+    int c;
+
+    p = rear->link;
+    while(p != rear){
+        c++;
+        p = p->link;
+    }
+
     return 0;
 }
 //End size
@@ -120,19 +149,61 @@ int size(){
 //Begin insert
 void insert(int x){
 
+    //locals for new node to be inserted.
+    struct node *temp;
+    temp = (struct node *)malloc(sizeof(struct node));
+    temp->info = x;
+
+    //guard against the empty case.
+    if(isEmpty()){
+        rear = temp;
+        rear->link = rear;
+    } else {
+        temp->link = rear->link;
+        rear->link = temp;
+    }
+
 }
 //End insert
 
 //Begin  Delete
 int Delete(){
+    //node to be deleted.
+    struct node *temp;
+    temp = (struct node *)malloc(sizeof(struct node));
+    int x;
 
-    return 0;
+    if(isEmpty()){
+        printf("List is empty cannot delete.\n");
+        exit(1);
+    } else {
+        temp->link = rear;
+        x = temp->info;
+        rear->link = temp->link;
+        rear = NULL;
+        free(temp);
+    }
+
+    return x;
 }
 //End Delete
 
 //Begin display
 void display(){
-
+    //pointer for skipping through the list.
+    struct node *p;
+    
+    if(isEmpty()){
+        printf("The list is empty.\n");
+        exit(1);
+    } else {
+        p = rear->link;
+        while(p != rear){
+            printf("| %d |", p->info);
+        }
+        printf("\n");
+        
+    }
 }
 //End display
 // END definitions.
