@@ -43,12 +43,17 @@ int main(){
     while(1){
         printf("1. Peek queue.\n");
         printf("2. Display size of queue.\n");
-        printf("3. Insert a new element into the queue \n");
-        printf("4. Delete an element from the queue \n");
-        printf("5. Display all elements \n");
+        printf("3. Insert a new element into the queue.\n");
+        printf("4. Delete an element from the queue.\n");
+        printf("5. Display all elements.\n");
+        printf("6. Quit.\n");
         
         //process selection.
         scanf("%d", &choice);
+
+        //exit the ui.
+        if(choice == 6)
+            break;
 
         //decision tree.
         switch (choice)
