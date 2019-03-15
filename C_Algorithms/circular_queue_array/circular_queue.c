@@ -41,7 +41,7 @@ int main(){
         printf("6. Exit\n");
 
         //get input.
-        scanf("%d", choice);
+        scanf("%d", &choice);
 
         //Exit program.
         if(choice == 6){
@@ -57,7 +57,7 @@ int main(){
         
             case 2:
                 printf("Please enter the element that you would like to insert into the queue\n");
-                scanf("%d", x);
+                scanf("%d", &x);
                 insert(x);
                 break;
         
@@ -142,7 +142,7 @@ void insert(int x){
     } else {
         rear = rear + 1;
     }
-    
+
     //LIFO.
     a[rear] = x;
 }
@@ -151,8 +151,27 @@ void insert(int x){
 //removes the last thing inserted into the queue.
 //Begin Delete
 int Delete(){
+    int x;
+    if(isEmpty()){
+        printf("Queue is empty\n");
+        exit(1);
+    }
+    x = a[front];
 
-    return 0;
+    //guard if only one element.
+    if(front == rear){
+        front = -1;
+        rear = -1;
+    } 
+    else if(front == MAX -1)
+    {
+        front = 0;
+    } else {
+        front = front + 1;
+    }
+    
+
+    return x;
 }
 //End Delete
 
@@ -160,7 +179,12 @@ int Delete(){
 //Begin peek
 int peek(){
 
-    return 0;
+    if(!isEmpty()){
+        return a[rear];
+    } else {
+        printf("queue is empty \n");
+        exit(1);
+    }
 }
 //End peek
 
