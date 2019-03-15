@@ -112,9 +112,15 @@ int isFull(){
 //returns 1 if there aren't any values in the queue.
 //Begin isEmpty
 int isEmpty(){
-    // case 1 front and rear = -1.
-    // case 2 rear = front - 1.
+    // case 1 -1.
+    // case 2 front = rear + 1.
     // case 3 front = 0 and rear = MAX -1
+    if((front == -1) || (front == rear +1) || (front == 0 && rear == MAX -1)){
+        return 1;
+    }
+    else {
+        return 0;
+    }
 
     return 0;
 }
