@@ -161,12 +161,21 @@ void display(){
     if(isEmpty()){
         printf("The queue is empty");
     } else{
-        //print queue string.
-        for(int i = front; i <= rear; i++){
-            printf("[%d]", a[i]);
+        if(front <= rear){
+            //print queue string.
+            for(int i = front; i <= rear; i++){
+                printf("[%d]", a[i]);
+            }
+            //break.
+            printf("\n");
+        } else if(front > rear){
+            //print queue string.
+            for(int i = front; i <= MAX-1; i++){
+                printf("[%d]", a[i]);
+            }
+            //break.
+            printf("\n");
         }
-        //break.
-        printf("\n");
     } 
 }
 //End display
