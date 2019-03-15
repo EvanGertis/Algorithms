@@ -87,7 +87,8 @@ int main(){
 
 //Begin initializeQueue
 void initializeQueue(){
-
+    front = -1;
+    rear = -1;
 }
 //End initializeQueue
 
@@ -102,7 +103,7 @@ int size(){
 
 //Begin isFull
 int isFull(){
-    // case 1 front
+    
 
     return 0;
 }
