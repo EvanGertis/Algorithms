@@ -104,8 +104,6 @@ int size(){
 //Begin isFull
 int isFull(){
     
-
-    return 0;
 }
 //End isFull
 
@@ -115,7 +113,7 @@ int isEmpty(){
     // case 1 -1.
     // case 2 front = rear + 1.
     // case 3 front = 0 and rear = MAX -1
-    if((front == -1) || (front == rear +1) || (front == 0 && rear == MAX -1)){
+    if((front == -1) || (front == rear +1) || ((front == 0) && (rear == MAX -1)) ){
         return 1;
     }
     else {
