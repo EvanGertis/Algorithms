@@ -103,7 +103,14 @@ int size(){
 //returns 1 if the maximum size MAX is allocated otherwise 0.
 //Begin isFull
 int isFull(){
-    
+    // case 1 front = rear + 1.    
+    // case 2 front = 0 and rear = MAX - 1.
+    if((front == rear +1) || ((front == 0) && (rear == MAX -1)) ){
+        return 1;
+    } else {
+        return 0;
+    }
+
 }
 //End isFull
 
