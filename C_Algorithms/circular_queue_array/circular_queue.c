@@ -156,7 +156,18 @@ int peek(){
 //prints out all of the elements saved in the queue.
 //Begin display
 void display(){
-
+    
+    //guard.
+    if(isEmpty()){
+        printf("The queue is empty");
+    } else{
+        //print queue string.
+        for(int i = front; i <= rear; i++){
+            printf("[%d]", a[i]);
+        }
+        //break.
+        printf("\n");
+    } 
 }
 //End display
 
