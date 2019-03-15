@@ -92,7 +92,7 @@ void initializeQueue(){
 }
 //End initializeQueue
 
-
+//returns size from front to rear index.
 //Begin size
 int size(){
 
@@ -100,7 +100,7 @@ int size(){
 }
 //End size
 
-
+//returns 1 if the maximum size MAX is allocated otherwise 0.
 //Begin isFull
 int isFull(){
     
@@ -109,7 +109,7 @@ int isFull(){
 }
 //End isFull
 
-
+//returns 1 if there aren't any values in the queue.
 //Begin isEmpty
 int isEmpty(){
     // case 1 front and rear = -1.
@@ -120,14 +120,14 @@ int isEmpty(){
 }
 //End isEmpty
 
-
+//increments the rear, decrements the front and adds an element into the queue.
 //Begin insert
 void insert(int x){
 
 }
 //End insert
 
-
+//removes the last thing inserted into the queue.
 //Begin Delete
 int Delete(){
 
@@ -135,7 +135,7 @@ int Delete(){
 }
 //End Delete
 
-
+//returns the next element in the queue.
 //Begin peek
 int peek(){
 
@@ -143,7 +143,7 @@ int peek(){
 }
 //End peek
 
-
+//prints out all of the elements saved in the queue.
 //Begin display
 void display(){
 
