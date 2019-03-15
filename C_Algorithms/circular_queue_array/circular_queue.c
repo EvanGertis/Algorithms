@@ -131,7 +131,20 @@ int isEmpty(){
 //increments the rear, decrements the front and adds an element into the queue.
 //Begin insert
 void insert(int x){
-
+    if(isFull()){
+        printf("Queue is full, please delete before inserting \n");
+    }
+    if(front == -1){
+        front = 0;
+    }
+    if(rear == MAX -1){
+        rear = 0;
+    } else {
+        rear = rear + 1;
+    }
+    
+    //LIFO.
+    a[rear] = x;
 }
 //End insert
 
