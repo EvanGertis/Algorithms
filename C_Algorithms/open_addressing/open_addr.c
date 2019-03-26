@@ -101,7 +101,7 @@ int main(){
                 break;
             case 3:
                 printf("Please enter the id that you would like to delete\n");
-                scanf("%d", key);
+                scanf("%d", &key);
                 del(key, table);
                 break;
             case 4:
@@ -176,7 +176,13 @@ int search(int key, struct Record table[]){
 //Used to delete a record in the table via key.
 //BEGIN del
 void del(int key, struct Record table[]){
-
+    int location = search(key, table);
+    if(location == -1){
+        printf("Key not found \n");
+    }
+    else{
+        table[location].status = DELETED;
+    }
 }
 //END del
 
