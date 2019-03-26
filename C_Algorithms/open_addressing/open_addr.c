@@ -186,11 +186,19 @@ void display(struct Record table[]){
     for(int i = 0; i < TSIZE; i++)
     {
         //guard against showing invalid data.
-        if(table[i].student_info.studentName){
+        if(table[i].status == OCCUPIED){
             printf("Student name : %s | ", table[i].student_info.studentName);
             printf(" id : %d | ", table[i].student_info.studentId);
             printf("\n\n");
         }
+        else if (table[i].status == DELETED)
+        {
+            printf("DELETED \n");
+        }
+        else{
+            printf("EMPTY \n");
+        }
+        
     }
     return;
 }
