@@ -119,7 +119,33 @@ int main(){
 //Used to insert a new record into the table.
 //BEGIN insert
 void insert(struct student rec, struct Record table[]){
+    
+    //locals
+    int location, h;
+    int key = rec.studentId;
+    
+    //new hash index.
+    h = hash(key);
 
+    location = h;
+
+    //loop over the table and insert the record in an empty cell.
+    for(int i = 0; i < TSIZE; i++)
+    {
+        //guard against overwritting existing values.
+        if(table[location].status == EMPTY || table[location].status == DELETED){
+            table[location].student_info = rec;
+            table[location].status = OCCUPIED; //set the flag to occupied for this cell.
+            printf("Record inserted \n\n");
+            return;
+        }
+        if(table[location].student_info.studentId == key){
+            printf("Duplicate key please try again \n\n");
+            return;
+        }
+        location = (h + i ) % TSIZE; //modulate and try again.
+    }
+    printf("Record cannot be inserted. Not enough room\n\n");
 }
 //END insert
 
@@ -141,15 +167,24 @@ void del(int key, struct Record table[]){
 //displays all records in the table.
 //BEGIN display
 void display(struct Record table[]){
-
+    for(int i = 0; i < TSIZE; i++)
+    {
+        //guard against showing invalid data.
+        if(table[i].student_info.studentName){
+            printf("Student name : %s | ", table[i].student_info.studentName);
+            printf(" id : %d | ", table[i].student_info.studentId);
+            printf("\n\n");
+        }
+    }
+    return;
 }
 //END display
 
 //Hashing function used to generate keys.
 //BEGIN hash
 int hash(int key){
-
-    return 0;
+    //mod hash
+    return (key%TSIZE);
 }
 //END hash
 
