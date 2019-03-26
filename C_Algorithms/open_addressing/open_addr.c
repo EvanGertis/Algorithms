@@ -95,15 +95,18 @@ int main(){
                     printf("Key not found\n");
                 }
                 else{
-                    printf("Key found at index %d\n", index);
-                    printf("%d %s", table[index].student_info.studentId, table[index].student_info.studentName);
+                    printf("Key found at index %d \n", index);
+                    printf("%d %s \n", table[index].student_info.studentId, table[index].student_info.studentName);
                 }
+                break;
             case 3:
                 printf("Please enter the id that you would like to delete\n");
                 scanf("%d", key);
                 del(key, table);
+                break;
             case 4:
                 display(table);
+                break;
             default:
                 break;
         }
@@ -152,8 +155,21 @@ void insert(struct student rec, struct Record table[]){
 //Used to find a record in table via key.
 //BEGIN search
 int search(int key, struct Record table[]){
-    
-    return 0;
+    int i, h, location;
+    h = hash(key);
+
+    location = h;
+
+    for(i = 1; i < TSIZE; i++){
+        if(table[location].status == EMPTY){
+            return -1;
+        }
+        if(table[location].student_info.studentId == key){
+            return location;
+        }
+        location = (h + i) % TSIZE; 
+    }
+    return -1;
 }
 //END search
 
