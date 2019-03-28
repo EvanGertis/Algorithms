@@ -44,8 +44,52 @@ int hash(int key);
 //Initial entry point of the program.
 int main(){
 
+    //locals.
+    int choice, key;
+    struct node *table[TSIZE];
+    struct student record;
 
-    printf("Hello");
+    //loop UI.
+    while(1){
+        
+        //show options.
+        printf("1. insert a record into the table.    \n");
+        printf("2. search for a record in the table.  \n");
+        printf("3. delete a record from the table.    \n");
+        printf("4. display all records from the table.\n");
+        printf("5. exit the program.                  \n");
+
+        //get user choice.
+        scanf("%d", &choice);
+
+        //guard if the user wants to quit.
+        if(choice == 5){
+            printf("Good bye.");
+            break;
+        }
+
+        switch (choice)
+        {
+            case 1:
+                printf("Please enter the student's name that you would like to insert: \n");
+                scanf("%d%s", &record.studentName);
+                insert(record, table);
+                break;
+            case 2:
+                printf("Please enter the studentID that you would like to search for: \n");
+                scanf("%d", &key);
+                search(key, table);
+            case 3:
+                printf("Please enter the studentID that you would like delete: \n");
+                scanf("%d", &key);
+                del(key, table);
+            case 4:
+                displayTable(table);
+            default:
+                break;
+        }
+
+    }
 
     return 0;
 }
