@@ -49,6 +49,11 @@ int main(){
     struct Node *table[TSIZE];
     struct student record;
 
+    //set the head pointers to NULL.
+    for(int i = 0; i <=TSIZE-1; i++){
+        table[i] = NULL;
+    }
+
     //loop UI.
     while(1){
         
@@ -72,8 +77,9 @@ int main(){
         {
             case 1:
                 printf("Please enter the student's name that you would like to insert: \n");
-                scanf("%d%s", &record.studentName);
+                scanf("%s", record.studentName);
                 printf("Please enter the studentId that you would like to associate with this name: \n");
+				scanf("%d", &record.studentID);
                 insert(record, table);
                 break;
             case 2:
@@ -110,29 +116,97 @@ int main(){
 
 //BEGIN insert.
 void insert(struct student emprec, struct Node *table[]){
+    //locals
+    int h, key;
+    struct Node *temp;
 
+    key = emprec.studentID;
+
+    if(search(key, table)!= -1)
+    {
+        printf("Duplicate key\n");
+        return;
+    }
+
+    h = hash(key);
+
+    temp = (struct Node*)malloc(sizeof(struct Node));
+    temp->info = emprec;
+    temp->link = table[h];
+    table[h] = temp;
 }//END insert.
 
 //BEGIN search.
 int search(int key, struct Node *table[]){
+    int h = hash(key);
+    struct Node *p = table[h];
 
-    return 0;
+    while(p!=NULL){
+        if(p->info.studentID == key){
+            printf("%d %s \n", p->info.studentID, p->info.studentName);
+            return h;
+        }
+
+        p= p->link;
+    }
+
+    return -1;
+    
 }//END search
 
 //BEGIN del.
 void del(int key, struct Node *table[]){
+    int h;
+    struct Node *temp, *p;
+    h = hash(key);
+
+    if(table[h] == NULL){
+        printf("Key %d not found\n", key);
+        return;
+    }
+
+    if(table[h]->info.studentID == key){
+        temp = table[h];
+        table[h] = table[h]->link;
+        free(temp);
+    }
+
+    p = table[h];
+    while(p->link != NULL){
+        if(p->link->info.studentID == key){
+            temp= p->link;
+            p->link = temp->link;
+            free(temp);
+            return;
+        }
+        p = p->link;
+    }
+    printf("Key %d not found \n", key);
 
 }//END del.
 
 //BEGIN displayTable.
 void displayTable(struct Node *table[]){
+    int i;
+    struct Node *p;
 
+    for(int i = 0; i < TSIZE; i++){
+        printf("\n[%d] ", i);
+        if(table[i]!= NULL){
+            p = table[i];
+            while(p!=NULL){
+                printf("%d %s\t", p->info.studentID, p->info.studentName);
+                p = p->link;
+            }
+        }
+    }
+    printf("\n");
 }//END displayTable
 
 //BEGIN hash.
 int hash(int key){
-
-    return 0;
+    //division method key generation.
+    return key % TSIZE;
 }//END hash.
 
 
