@@ -20,7 +20,7 @@ struct student
 
 //node for linked list.
 struct Node
-{
+{ 
     struct student info;
     struct Node *link;
 };
