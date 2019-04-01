@@ -1,7 +1,7 @@
 /*
-File Name: chained_hash.c
+File Name: chained_hash.h
 Author : Evan Gertis
-Purpose : contains implementation of chained hash table.
+Purpose : contains definitions and implementations of chained hash table functions and vars.
 Date : 03/28/2019
 */
 
