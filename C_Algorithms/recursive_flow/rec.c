@@ -35,6 +35,9 @@ int nGCD(int a, int b);
 //returns the nth fibonacci number.
 int nFib(int n);
 
+//solves tower of hanoi problem.
+void hanoi(int n, char source, char temp, char dest);
+
 //End definitions.
 //************************************************
 //************************************************
@@ -42,10 +45,9 @@ int nFib(int n);
 
 
 int main(){
-    int nResult;
-    nResult = nFib(5);
-
-    printf("result: %d", nResult);
+    int n;
+    n = 3;
+    hanoi(n, 'A', 'B', 'C');
 
 
     return 0;
@@ -126,6 +128,7 @@ int nGCD(int a, int b){
     return nGCD(b, a%b);
 }
 
+//returns nth fibonacci
 int nFib(int n){
 
     //base case.
@@ -135,6 +138,20 @@ int nFib(int n){
 
     return nFib(n - 1) + nFib(n - 2);
 }
+
+//solves tower of hanoi
+void hanoi(int n, char source, char temp, char dest){
+
+    //base case.
+    if(n == 1){
+        printf("Moving disk %d from %c to %c\n", n, source, dest);
+        return;
+    }
+    hanoi(n-1, source, dest, temp);
+    printf("Moving disk %d from %c to %c\n", n, source, dest);
+    hanoi(n - 1, temp, source, dest);
+}
+
 
 //End implementations.
 //************************************************
