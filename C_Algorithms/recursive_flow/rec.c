@@ -22,6 +22,9 @@ int nSumNtoOne(int n);
 //returns the sum of digits.
 int nSumOfDigits(int n);
 
+//converts decimal into binary
+void decimalToBinary(int n);
+
 //End definitions.
 //************************************************
 //************************************************
@@ -29,10 +32,16 @@ int nSumOfDigits(int n);
 
 
 int main(){
-    int nResult;
-    nResult = nSumOfDigits(123);
+    // int nResult;
+    // nResult = nSumOfDigits(123);
 
-    printf("result: %d", nResult);
+    // printf("result: %d", nResult);
+
+    for(int i = 0; i < 15; i++){
+
+        decimalToBinary(i);
+        printf("\n");
+    }
 
     return 0;
 }
@@ -77,6 +86,18 @@ int nSumOfDigits(int n){
     }
 
     return nSumOfDigits(n/10) + n%10;
+}
+
+//prints binary representation of decimal number.
+void decimalToBinary(int n){
+
+    //base case.
+    if(n == 0){
+        return;
+    }
+
+    decimalToBinary(n/2);
+    printf("%d ", n % 2);
 }
 
 //End implementations.
