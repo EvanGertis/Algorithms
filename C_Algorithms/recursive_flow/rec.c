@@ -7,6 +7,7 @@ Date: 04/02/2019
 
 #include "stdlib.h"
 #include "stdio.h"
+#include "math.h"
 
 //************************************************
 //************************************************
@@ -25,6 +26,8 @@ int nSumOfDigits(int n);
 //converts decimal into binary
 void decimalToBinary(int n);
 
+float nNthPower(float x, int n);
+
 //End definitions.
 //************************************************
 //************************************************
@@ -32,16 +35,11 @@ void decimalToBinary(int n);
 
 
 int main(){
-    // int nResult;
-    // nResult = nSumOfDigits(123);
+    int nResult;
+    nResult = nNthPower(2, 2);
 
-    // printf("result: %d", nResult);
+    printf("result: %d", nResult);
 
-    for(int i = 0; i < 15; i++){
-
-        decimalToBinary(i);
-        printf("\n");
-    }
 
     return 0;
 }
@@ -98,6 +96,16 @@ void decimalToBinary(int n){
 
     decimalToBinary(n/2);
     printf("%d ", n % 2);
+}
+
+//returns nth power
+float nNthPower(float x, int n){
+
+    if(n == 0){
+        return 1;
+    }
+
+    return x * nNthPower(x, n - 1);
 }
 
 //End implementations.
