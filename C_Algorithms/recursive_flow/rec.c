@@ -19,6 +19,9 @@ int nFactorial(int n);
 //returns sum from n to 1.
 int nSumNtoOne(int n);
 
+//returns the sum of digits.
+int nSumOfDigits(int n);
+
 //End definitions.
 //************************************************
 //************************************************
@@ -27,7 +30,7 @@ int nSumNtoOne(int n);
 
 int main(){
     int nResult;
-    nResult = nSumNtoOne(100);
+    nResult = nSumOfDigits(123);
 
     printf("result: %d", nResult);
 
@@ -65,6 +68,15 @@ int nSumNtoOne(int n){
     nSum = n + nSumNtoOne(n - 1);
     
     return nSum;
+}
+
+//returns sum of digits.
+int nSumOfDigits(int n){
+    if(n/10 == 0){
+        return n;
+    }
+
+    return nSumOfDigits(n/10) + n%10;
 }
 
 //End implementations.
