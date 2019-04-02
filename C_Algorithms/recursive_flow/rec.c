@@ -32,6 +32,9 @@ float nNthPower(float x, int n);
 //returns the gcd for two numbers.
 int nGCD(int a, int b);
 
+//returns the nth fibonacci number.
+int nFib(int n);
+
 //End definitions.
 //************************************************
 //************************************************
@@ -40,7 +43,7 @@ int nGCD(int a, int b);
 
 int main(){
     int nResult;
-    nResult = nGCD(6, 12);
+    nResult = nFib(5);
 
     printf("result: %d", nResult);
 
@@ -121,6 +124,16 @@ int nGCD(int a, int b){
     }
 
     return nGCD(b, a%b);
+}
+
+int nFib(int n){
+
+    //base case.
+    if(n == 0 || n == 1){
+        return 1;
+    }
+
+    return nFib(n - 1) + nFib(n - 2);
 }
 
 //End implementations.
