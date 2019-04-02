@@ -26,7 +26,11 @@ int nSumOfDigits(int n);
 //converts decimal into binary
 void decimalToBinary(int n);
 
+//returns n th power.
 float nNthPower(float x, int n);
+
+//returns the gcd for two numbers.
+int nGCD(int a, int b);
 
 //End definitions.
 //************************************************
@@ -36,7 +40,7 @@ float nNthPower(float x, int n);
 
 int main(){
     int nResult;
-    nResult = nNthPower(2, 2);
+    nResult = nGCD(6, 12);
 
     printf("result: %d", nResult);
 
@@ -106,6 +110,17 @@ float nNthPower(float x, int n){
     }
 
     return x * nNthPower(x, n - 1);
+}
+
+//returns gcd.
+int nGCD(int a, int b){
+    
+    //base case.
+    if(b == 0){
+        return a;
+    }
+
+    return nGCD(b, a%b);
 }
 
 //End implementations.
