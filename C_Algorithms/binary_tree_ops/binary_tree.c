@@ -27,10 +27,15 @@ void gfDisplay(struct node *stPtr);
 //*********************************
 
 int main(){
+    //locals
+    struct node *root = NULL;
+    int choice, x;
 
     //insert the first node.
-    gfGetnode(10);
+    root = gfGetnode(10);
 
+    //display nodes.
+    gfDisplay(root);
     return 0;
 }
 
@@ -52,7 +57,12 @@ struct node *gfGetnode(int intData){
 
 //Begin display.
 void gfDisplay(struct node *stPtr){
-
+    if(stPtr == NULL){
+        return;
+    }
+    printf("%d", stPtr->intData);
+    gfDisplay(stPtr->stLeftchid);
+    gfDisplay(stPtr->stRightchild);
 }
 //End display.
 
