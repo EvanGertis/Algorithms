@@ -16,6 +16,51 @@ void display(int a[], int n);
 
 int main(){
 
+    //locals
+    int a[50];
+    int n=0;
+    int choice, value;
+
+    a[0] = LARGE_VALUE;
+
+    //UI loop
+    while(1){
+        printf("1. Insert\n");
+        printf("2. Delete root\n");
+        printf("3. Display\n");
+        printf("4. Exit\n");
+
+        // get input.
+        printf("Please enter your choice: \n");
+        scanf("%d", &choice);
+        if(choice == 4){
+            break;
+        }
+
+        switch (choice)
+        {
+            case 1:
+                printf("Enter the value to be inserted : ");
+                scanf("%d", &value);
+                insert(value, a, &n);
+                break;
+            
+            case 2: 
+                if(n == 0)
+                    printf("Heap is empty \n");
+                else{
+                    value = deleteRoot(a, &n);
+                    printf("Maximum value is %d\n", value);
+                }
+                break;
+            case 3:
+                 display(a,n);
+                 break;
+            default:
+                printf("Wrong choice\n");
+        }
+    }
+
     return 0;
 }
 
@@ -24,7 +69,7 @@ int main(){
 void insert(int value, int a[], int *pn){
 
 }
-//end insert
+//end
 
 //begin deleteRoot
 int deleteRoot(int a[], int *pn){
